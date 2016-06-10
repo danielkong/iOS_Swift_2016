@@ -48,7 +48,7 @@ class MasterViewController: UICollectionViewController {
         let indexPaths = collectionView!.indexPathsForSelectedItems()! as [NSIndexPath]
         papersDataSource.deleteItemsAtIndexPaths(indexPaths)
         
-//        collectionView!.deleteItemsAtIndexPaths(indexPaths)
+//        collectionView!.deleteItemsAtIndexPaths(indexPaths) // without animation
         let layout = collectionViewLayout as! PapersFlowLayout
         layout.disappearingIndexPath = indexPaths
         UIView.animateWithDuration(0.65, delay: 0.0, options: .CurveEaseInOut, animations: { () -> Void in
@@ -60,14 +60,14 @@ class MasterViewController: UICollectionViewController {
     
     // MARK: add cell
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
-        let indexPath = papersDataSource.indexPathForNewRandomPaper()
+        let indexPath = papersDataSource.indexPathForNewRandomPaper() // add item to model in func 'indexPathForNewRandomPaper'
         
         // layout
         let layout = collectionViewLayout as! PapersFlowLayout
         layout.appearingIndexPath = indexPath
         
         // since custom layout, remove this line:
-//        collectionView!.insertItemsAtIndexPaths([indexPath])
+//        collectionView!.insertItemsAtIndexPaths([indexPath]) // without animation
         // animation
         UIView.animateWithDuration(1.0, delay:0, usingSpringWithDamping: 0.65, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {() -> Void in
             self.collectionView!.insertItemsAtIndexPaths([indexPath])
@@ -180,7 +180,7 @@ class MasterViewController: UICollectionViewController {
         }
     }
   
-    // edit mode delete cell
+    // use edit mode delete cell
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
