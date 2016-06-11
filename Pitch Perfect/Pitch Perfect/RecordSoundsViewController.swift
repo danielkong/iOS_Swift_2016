@@ -76,7 +76,6 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
         print("finished recording!")
         if flag == true {
             self.performSegueWithIdentifier("stopRecording", sender: audioRecorder.url)
-            print(audioRecorder.url)
         } else {
             print("failed to save record")
         }
