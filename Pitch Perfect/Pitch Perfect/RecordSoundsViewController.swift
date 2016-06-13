@@ -17,12 +17,14 @@ class RecordSoundsViewController: UIViewController {
     
     var audioRecorder: AVAudioRecorder!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
     override func viewWillAppear(animated: Bool) {
         stopRecordingButton.enabled = false
+    }
+    
+    private func setupRecordButtonEnable(enable: Bool) {
+        label.text = enable ? "recording in progress..." : "Tap to record"
+        startRecordingButton.enabled = !enable
+        stopRecordingButton.enabled = enable
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -32,25 +34,16 @@ class RecordSoundsViewController: UIViewController {
             playSoundsVC.recordedAudioURL = recordedAudioURL
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func stopRecording(sender: AnyObject) {
-        label.text = "Tap to record"
-        startRecordingButton.enabled = true
-        stopRecordingButton.enabled = false
+        let session = AVAudioSession.sharedInstance()
+        try! session.setActive(false)
+        setupRecordButtonEnable(false)
         audioRecorder.stop()
     }
     
     @IBAction func recordAudio(sender: AnyObject) {
-        label.text = "recording in progress..."
-        startRecordingButton.enabled = false
-        stopRecordingButton.enabled = true
-        
-        print("ping me")
+        setupRecordButtonEnable(true)
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as String
         let recordingName = "recordedVoice.wav"
@@ -59,7 +52,8 @@ class RecordSoundsViewController: UIViewController {
         print(filePath)
         
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+//        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, withOptions: AVAudioSessionCategoryOptions.DefaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
         
@@ -75,10 +69,13 @@ extension RecordSoundsViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         print("finished recording!")
         if flag == true {
-            self.performSegueWithIdentifier("stopRecording", sender: audioRecorder.url)
+            performSegueWithIdentifier("stopRecording", sender: audioRecorder.url)
         } else {
             print("failed to save record")
         }
     }
 }
 
+//  https://discussions.udacity.com/t/playback-sound-too-soft-in-physical-device-it-is-loud-enough-in-simulator-though/41701
+
+//you can also set the shared audio session (`AVAudioSession.sharedInstance()`)'s category to playback only while playing, and the audio session will choose which place to play the audio out of

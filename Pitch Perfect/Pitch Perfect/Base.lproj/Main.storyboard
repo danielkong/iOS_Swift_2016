@@ -18,24 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-4v-r2f">
-                                <rect key="frame" x="20" y="64" width="560" height="386"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4dK-4v-r2f">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pd-VY-KfA">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="129"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pd-VY-KfA">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="315"/>
                                         <state key="normal" image="recordButton"/>
                                         <connections>
                                             <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GTJ-VG-GHk"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kj4-QB-UKA">
-                                        <rect key="frame" x="0.0" y="129" width="560" height="129"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kj4-QB-UKA">
+                                        <rect key="frame" x="0.0" y="315" width="560" height="65"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooD-wh-WdB">
-                                        <rect key="frame" x="0.0" y="258" width="560" height="129"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooD-wh-WdB">
+                                        <rect key="frame" x="0.0" y="379" width="560" height="157"/>
                                         <state key="normal" image="stopButton"/>
                                         <connections>
                                             <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJP-xE-RI6"/>
@@ -46,13 +46,19 @@
                                     <constraint firstItem="kj4-QB-UKA" firstAttribute="top" secondItem="4pd-VY-KfA" secondAttribute="bottom" id="2Zy-Vo-wwx"/>
                                     <constraint firstItem="ooD-wh-WdB" firstAttribute="top" secondItem="kj4-QB-UKA" secondAttribute="bottom" constant="50" id="zCa-vc-Non"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2Zy-Vo-wwx"/>
+                                        <exclude reference="zCa-vc-Non"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="4dK-4v-r2f" secondAttribute="trailing" id="6Fz-O3-YoO"/>
                             <constraint firstItem="4dK-4v-r2f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HG3-21-38S"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4dK-4v-r2f" secondAttribute="bottom" constant="150" id="TAo-CR-OLv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4dK-4v-r2f" secondAttribute="bottom" id="TAo-CR-OLv"/>
                             <constraint firstItem="4dK-4v-r2f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="do0-JN-QAu"/>
                         </constraints>
                     </view>
@@ -166,10 +172,15 @@
                     <connections>
                         <outlet property="chipmunkButton" destination="Cb0-5D-TFK" id="nnQ-E0-PYf"/>
                         <outlet property="echoButton" destination="n8Q-zO-Btz" id="AWT-MU-4Sg"/>
+                        <outlet property="innerStackView1" destination="tgT-4A-6XY" id="Mse-Zf-pZ0"/>
+                        <outlet property="innerStackView2" destination="dAQ-bF-axW" id="l9Q-h5-VTR"/>
+                        <outlet property="innerStackView3" destination="eVr-NX-dFv" id="E1V-pv-dJa"/>
+                        <outlet property="overviewStackView" destination="vAW-wH-E7y" id="NCr-lE-07F"/>
                         <outlet property="rabbitButton" destination="v3G-Rz-mpc" id="H47-cd-OL6"/>
                         <outlet property="reverbButton" destination="uC3-gL-1dx" id="APD-6S-vtS"/>
                         <outlet property="snailButton" destination="njV-Pw-bN0" id="uno-Ep-E9b"/>
                         <outlet property="stopButton" destination="U3h-s7-Plk" id="4ic-74-MRo"/>
+                        <outlet property="stopPlayStackView" destination="iB2-1h-MQb" id="PBn-R0-US2"/>
                         <outlet property="vaderButton" destination="Hw8-Ia-H08" id="hCS-gR-JPL"/>
                     </connections>
                 </viewController>

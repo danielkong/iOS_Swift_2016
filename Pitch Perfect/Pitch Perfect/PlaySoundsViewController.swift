@@ -19,6 +19,12 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var rabbitButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
+    @IBOutlet weak var overviewStackView: UIStackView!
+    @IBOutlet weak var innerStackView1: UIStackView!
+    @IBOutlet weak var innerStackView2: UIStackView!
+    @IBOutlet weak var innerStackView3: UIStackView!
+    @IBOutlet weak var stopPlayStackView: UIStackView!
+    
     enum ButtonType: Int {
         case Chipmunk = 0,
         Vader,
@@ -29,7 +35,6 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playSounds(sender: UIButton) {
-        print("play")
         switch (ButtonType(rawValue: sender.tag)!) {
         case .Chipmunk:
             playSound(pitch: 1000)
@@ -49,7 +54,6 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func stopButtonPressed(sender: UIButton) {
-        print("stop")
         stopAudio()
     }
     
@@ -62,30 +66,33 @@ class PlaySoundsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view Did Load")
         setupAudio()
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI(.NotPlaying)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        setStackViewLayout()
 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    private func setStackViewLayout() {
+        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        
+        if orientation.isPortrait{
+            self.overviewStackView.axis = .Vertical
+            self.setInnerStackViewsAxis(.Horizontal)
+        } else {
+            self.overviewStackView.axis = .Horizontal
+            self.setInnerStackViewsAxis(.Vertical)
+        }
+    }
+    
+    func setInnerStackViewsAxis(axisStyle: UILayoutConstraintAxis)  {
+        self.innerStackView1.axis = axisStyle
+        self.innerStackView2.axis = axisStyle
+        self.innerStackView3.axis = axisStyle
+        self.stopPlayStackView.axis = axisStyle
+    }
 
 }
