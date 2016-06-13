@@ -80,25 +80,25 @@ class PlaySoundsViewController: UIViewController {
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         
         if orientation.isPortrait{
-            self.overviewStackView.axis = .Vertical
-            self.setInnerStackViewsAxis(.Horizontal)
+            overviewStackView.axis = .Vertical
+            setInnerStackViewsAxis(.Horizontal)
         } else {
-            self.overviewStackView.axis = .Horizontal
-            self.setInnerStackViewsAxis(.Vertical)
+            overviewStackView.axis = .Horizontal
+            setInnerStackViewsAxis(.Vertical)
         }
     }
     
     func setInnerStackViewsAxis(axisStyle: UILayoutConstraintAxis)  {
-        self.innerStackView1.axis = axisStyle
-        self.innerStackView2.axis = axisStyle
-        self.innerStackView3.axis = axisStyle
-        self.stopPlayStackView.axis = axisStyle
+        innerStackView1.axis = axisStyle
+        innerStackView2.axis = axisStyle
+        innerStackView3.axis = axisStyle
+        stopPlayStackView.axis = axisStyle
     }
     
     // override this function to make sure when rotated to landscape, the buttons are not squeezed
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition({ (context) -> Void in
             self.setStackViewLayout()
-            }, completion: nil)
+        }, completion: nil)
     }
 }
