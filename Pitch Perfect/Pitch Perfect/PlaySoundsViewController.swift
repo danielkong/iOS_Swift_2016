@@ -94,5 +94,11 @@ class PlaySoundsViewController: UIViewController {
         self.innerStackView3.axis = axisStyle
         self.stopPlayStackView.axis = axisStyle
     }
-
+    
+    // override this function to make sure when rotated to landscape, the buttons are not squeezed
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ (context) -> Void in
+            self.setStackViewLayout()
+            }, completion: nil)
+    }
 }
