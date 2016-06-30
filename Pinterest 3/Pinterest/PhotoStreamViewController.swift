@@ -1,9 +1,9 @@
 //
 //  PhotoStreamViewController.swift
-//  RWDevCon
 //
-//  Created by Mic Pringle on 26/02/2015.
-//  Copyright (c) 2015 Ray Wenderlich. All rights reserved.
+//
+//  Created by Daniel Kong on 03/03/2016.
+//  Copyright (c) 2015 Daniel Kong. All rights reserved.
 //
 
 import UIKit

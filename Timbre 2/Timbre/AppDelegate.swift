@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Timbre
 //
-//  Created by Mic Pringle on 20/03/2015.
-//  Copyright (c) 2015 Razeware LLC. All rights reserved.
+//
+//  Created by Daniel Kong on 02/03/2016.
+//  Copyright (c) 2016 Daniel Kong. All rights reserved.
 //
 
 import UIKit

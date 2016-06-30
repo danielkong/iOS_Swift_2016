@@ -1,9 +1,9 @@
 //
 //  PinterestLayout.swift
-//  Pinterest
 //
-//  Created by Mic Pringle on 10/03/2015.
-//  Copyright (c) 2015 Razeware LLC. All rights reserved.
+//
+//  Created by Daniel Kong on 03/03/2016.
+//  Copyright (c) 2015 Daniel Kong. All rights reserved.
 //
 
 import UIKit

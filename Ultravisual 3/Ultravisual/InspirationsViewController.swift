@@ -1,9 +1,9 @@
 //
 //  InspirationsViewController.swift
-//  RWDevCon
 //
-//  Created by Mic Pringle on 02/03/2015.
-//  Copyright (c) 2015 Ray Wenderlich. All rights reserved.
+//
+//  Created by Daniel Kong on 02/14/2016.
+//  Copyright (c) 2016 Daniel Kong. All rights reserved.
 //
 
 import UIKit

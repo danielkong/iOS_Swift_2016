@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Camera Roll
 //
-//  Created by Mic Pringle on 18/03/2015.
-//  Copyright (c) 2015 Razeware LLC. All rights reserved.
+//
+//  Created by Daniel Kong on 18/03/2016.
+//  Copyright (c) 2016 Razeware LLC. All rights reserved.
 //
 
 import UIKit
