@@ -29,22 +29,17 @@ class EditorViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         
         if let currentMeme = meme {
-
             tabBarController?.tabBar.hidden = true
             imagePickerView?.image = currentMeme.image
             hiddenBars(false)
             setButtonsEnabled(true)
-            bottomBar.hidden = true
-
         } else {
             bottomBar.hidden = false
             cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
             setButtonsEnabled(false)
         }
-        if let topTextField = topTextField {
+        if let topTextField = topTextField, let bottomTextField = bottomTextField {
             configureTextField(topTextField)
-        }
-        if let bottomTextField = bottomTextField {
             configureTextField(bottomTextField)
         }
     }
